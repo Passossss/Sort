@@ -18,41 +18,34 @@ public class Main {
         for (String arquivo : arquivos) {
             System.out.println("Processando arquivo: " + arquivo);
 
-            // Lendo o arquivo CSV
             int[] arr = readCSV(arquivo);
 
-            // Bubble Sort
             long startTime = System.nanoTime();
             Sorts.bubbleSort(arr);
             long endTime = System.nanoTime();
             long duration = (endTime - startTime);
             System.out.println("Bubble Sort tempo de execução: " + duration / 1_000_000.0 + " ms");
 
-            // Resetando o array para a próxima ordenação
             arr = readCSV(arquivo);
 
-            // Insertion Sort
             long startTimeInsertion = System.nanoTime();
             Sorts.insertionSort(arr);
             long endTimeInsertion = System.nanoTime();
             long durationInsertion = (endTimeInsertion - startTimeInsertion);
             System.out.println("InsertionSort tempo de execução: " + durationInsertion / 1_000_000.0 + " ms");
 
-            // Resetando o array para a próxima ordenação
             arr = readCSV(arquivo);
 
-            // QuickSort
             long startTimeQuick = System.nanoTime();
             Sorts.quickSort(arr, 0, arr.length - 1);
             long endTimeQuick = System.nanoTime();
             long durationQuick = (endTimeQuick - startTimeQuick);
             System.out.println("QuickSort tempo de execução: " + durationQuick / 1_000_000.0 + " ms");
 
-            System.out.println();  // Separador entre os resultados de diferentes arquivos
+            System.out.println();
         }
     }
 
-    // Método para ler o arquivo CSV
     public static int[] readCSV(String filename) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(filename));
         List<Integer> dataList = new ArrayList<>();
@@ -64,7 +57,6 @@ public class Main {
             }
         }
         br.close();
-        // Convertendo para array
         int[] data = new int[dataList.size()];
         for (int i = 0; i < dataList.size(); i++) {
             data[i] = dataList.get(i);
